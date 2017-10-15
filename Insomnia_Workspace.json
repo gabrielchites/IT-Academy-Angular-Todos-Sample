@@ -1,0 +1,149 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2017-10-15T23:47:18.611Z",
+	"__export_source": "insomnia.desktop.app:v5.9.6",
+	"resources": [
+		{
+			"_id": "wrk_112772309df7426e9ed2c968652017f7",
+			"parentId": null,
+			"modified": 1508108782105,
+			"created": 1508108782105,
+			"name": "Insomnia",
+			"description": "",
+			"certificates": [],
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_8f2f59fd302048c09075a05018ef890b",
+			"parentId": "wrk_112772309df7426e9ed2c968652017f7",
+			"modified": 1508108893929,
+			"created": 1508108782116,
+			"name": "Base Environment",
+			"data": {
+				"apiUrl": "http://localhost:3000/api"
+			},
+			"color": null,
+			"isPrivate": false,
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_599087be066f47fdae96f92f52c3c282",
+			"parentId": "wrk_112772309df7426e9ed2c968652017f7",
+			"modified": 1508108782107,
+			"created": 1508108782107,
+			"name": "Default Jar",
+			"cookies": [],
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "fld_81ac23de7216471fa1c1722b58cd77bf",
+			"parentId": "wrk_112772309df7426e9ed2c968652017f7",
+			"modified": 1508108801091,
+			"created": 1508108801091,
+			"name": "todos",
+			"description": "",
+			"environment": {},
+			"metaSortKey": -1508108801091,
+			"_type": "request_group"
+		},
+		{
+			"_id": "req_f9df3341fb8e4a68909333794ebff2c3",
+			"parentId": "fld_81ac23de7216471fa1c1722b58cd77bf",
+			"modified": 1508108885047,
+			"created": 1508108866863,
+			"url": "{{ apiUrl  }}/todos",
+			"name": "getTodos",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1508108866863,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_cfd35f145f3a4816ab6d0a03f4b63a01",
+			"parentId": "fld_81ac23de7216471fa1c1722b58cd77bf",
+			"modified": 1508111166068,
+			"created": 1508108936290,
+			"url": "{{ apiUrl  }}/todos/3",
+			"name": "getTodoById",
+			"description": "",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [],
+			"authentication": {},
+			"metaSortKey": -1508108866913,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_5f499a1b92864b9db305ffa1f9c43561",
+			"parentId": "fld_81ac23de7216471fa1c1722b58cd77bf",
+			"modified": 1508110233122,
+			"created": 1508109682550,
+			"url": "{{ apiUrl  }}/todos",
+			"name": "postTodo",
+			"description": "",
+			"method": "POST",
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"text\" : \"study more nodeJs\",\n\t\"done\" : false\n}"
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_4feae0310b0b4d738bdf213a42156fe4"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1508109682550,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		},
+		{
+			"_id": "req_6525734411924d3ea96f2603c3b1d17a",
+			"parentId": "fld_81ac23de7216471fa1c1722b58cd77bf",
+			"modified": 1508111073660,
+			"created": 1508111012744,
+			"url": "{{ apiUrl  }}/todos/1",
+			"name": "deleteTodo",
+			"description": "",
+			"method": "DELETE",
+			"body": {
+				"mimeType": "application/json",
+				"text": ""
+			},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json",
+					"id": "pair_4feae0310b0b4d738bdf213a42156fe4"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1508109274731.5,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"_type": "request"
+		}
+	]
+}
