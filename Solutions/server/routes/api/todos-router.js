@@ -6,6 +6,7 @@ let todos = [
   {text: 'remember the milk', done: false, id: 1},
   {text: 'remember the beer', done: false, id: 2},
   {text: 'done task', done: true, id: 3},
+  {text: 'learn Node.js', done: false, id: 4},
 ];
 
 function getNewId() {
@@ -49,16 +50,24 @@ router.delete('/:id', (req, res) => {
   let todo = getTodoById(id);
   let todoIndex = todos.indexOf(todo);
 
-  if(todoIndex < 0){
+  if (todoIndex < 0) {
     res.statusCode = 404;
     res.send(null);
     return;
   }
 
   todos.splice(todoIndex, 1);
+});
 
-  res.statusCode = 200;
-  res.send(null);
+router.put('/:id', (req, res) => {
+  const id = req.params.id;
+  const todo = getTodoById(id);
+  const newTodo = req.body;
+
+  todo.text = newTodo.text;
+  todo.done = newTodo.done;
+
+  res.json(todo);
 });
 
 module.exports = router;
