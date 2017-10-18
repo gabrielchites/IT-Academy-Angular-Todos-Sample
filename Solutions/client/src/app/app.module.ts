@@ -11,10 +11,10 @@ const appRoutes = [
     component: TodosComponent,
     data: { title: 'Heroes List' }
   },
-  // { path: '',
-  //   redirectTo: '/todos',
-  //   pathMatch: 'full'
-  // },
+  { path: '',
+    redirectTo: '/todos',
+    pathMatch: 'full'
+  },
   // { path: '**', component: PageNotFoundComponent }
 ];
 
