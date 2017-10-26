@@ -10,7 +10,8 @@ import {TodoService} from "./services/todo.service";
 export class TodosComponent implements OnInit {
   pageTitle: string = "TO-DOs";
   newTodoText: string = '';
-  editingTodoText: ''; // so the original text can be restored in case the user press Escape
+  editingTodoText: string; // so the original text can be restored in case the user press Escape
+  editingTodo: TodoExtended;
   inputFocused: false;
   todos: Todo[]; // = [{text: 'Remember the milk', isDone: false}, {text: 'Done task', isDone: true}];
   todosVisibility = 'all';
@@ -56,4 +57,25 @@ export class TodosComponent implements OnInit {
     this.todosVisibility = visibility;
   }
 
+  beginEditingTodo(todo: TodoExtended){
+    todo.isEditing = true;
+    this.editingTodo = todo;
+    this.editingTodoText = todo.text;
+  }
+
+  finishEditingTodo(){
+    this.editingTodo.text = this.editingTodoText;
+    this.editingTodo.isEditing = false;
+    console.log('finish')
+
+  }
+
+  cancelEditingTodo(){
+    this.editingTodo.isEditing = false;
+    console.log('cancel')
+  }
+}
+
+interface TodoExtended extends Todo {
+  isEditing : boolean;
 }

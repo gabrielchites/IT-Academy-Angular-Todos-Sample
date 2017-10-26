@@ -10,14 +10,15 @@
     <input id="toggle-all" class="toggle-all" type="checkbox">
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
-      <li *ngFor="let todo of this.filteredTodos()"  [ngClass]="{'completed': todo.isDone}">
+      <li *ngFor="let todo of this.filteredTodos()" [ngClass]="{'completed': todo.isDone, 'editing': todo.isEditing}" (dblclick)="beginEditingTodo(todo)">
         <div class="view">
           <input class="toggle" type="checkbox" [(ngModel)]="todo.isDone"/>
           <label>{{todo.text}}</label>
           <!--<label [innerText]="newTodoText"></label>-->
           <button class="destroy" (click)="deleteTodo(todo)"></button>
         </div>
-        <input style="display:none"/>
+
+        <input *ngIf="todo.isEditing" class="edit" [(ngModel)]="editingTodoText" (keyup.enter)="finishEditingTodo()" (keyup.esc)="cancelEditingTodo()"/>
       </li>
     </ul>
   </section>
@@ -41,3 +42,4 @@
 <p>
   {{filteredTodos() | json}}
 </p>
+<b>{{editingTodoText}}</b>
