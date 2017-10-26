@@ -1,25 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+  styleUrls: ['todos.component.css']
 })
 export class TodosComponent implements OnInit {
-  pageTitle : string = "TO-DOs";
+  pageTitle: string = "TO-DOs";
   newTodoText: string = '';
   editingTodoText: ''; // so the original text can be restored in case the user press Escape
   inputFocused: false;
-  todos : Todo[] = [];
-  todosVisibility: 'all';
+  todos: Todo[] = [{text: 'Remember the milk', isDone: false}, {text: 'Done task', isDone: true}];
+  todosVisibility = 'all';
 
-  constructor() { }
+  filters = {
+    all(todos) {
+      return todos;
+    },
+    active(todos) {
+      return todos.filter(t => !t.isDone);
+    },
+    done(todos) {
+      return todos.filter(t => t.isDone);
+    },
+  };
+
+  filteredTodos = () => this.filters[this.todosVisibility](this.todos);
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
-  addTodo() : void {
-    let newTodo : Todo = new Todo();
+  addTodo(): void {
+    let newTodo: Todo = new Todo();
     newTodo.text = this.newTodoText;
     newTodo.isDone = false;
 
@@ -27,9 +42,18 @@ export class TodosComponent implements OnInit {
     this.newTodoText = '';
   }
 
+  deleteTodo(todo: Todo): void {
+    const index = this.todos.indexOf(todo);
+    this.todos.splice(index, 1);
+  }
+
+  setVisibility(visibility: string){
+    this.todosVisibility = visibility;
+  }
+
 }
 
-export class Todo{
-  text : string;
+export class Todo {
+  text: string;
   isDone: boolean;
 }

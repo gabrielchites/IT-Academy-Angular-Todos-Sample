@@ -1,21 +1,19 @@
-
 <section class="todoapp">
   <header class="header">
     <h1>To-dos</h1>
-    <form (submit)="addTodo()">
-      <input name="newTodo" class="new-todo" [(ngModel)]="this.newTodoText" placeholder="What needs to be done?" autofocus="">
+    <form>
+      <input class="new-todo" placeholder="What needs to be done?" autofocus="">
     </form>
   </header>
   <section class="main" style="display: block;">
     <input id="toggle-all" class="toggle-all" type="checkbox">
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
-      <li *ngFor="let todo of this.filteredTodos()"  [ngClass]="{'completed': todo.isDone}">
+      <li>
         <div class="view">
-          <input class="toggle" type="checkbox" [(ngModel)]="todo.isDone"/>
-          <label>{{todo.text}}</label>
-          <!--<label [innerText]="newTodoText"></label>-->
-          <button class="destroy" (click)="deleteTodo(todo)"></button>
+          <input class="toggle" type="checkbox"/>
+          <label>Todo text here</label>
+          <button class="destroy"></button>
         </div>
         <input style="display:none"/>
       </li>
@@ -25,19 +23,15 @@
     <span class="todo-count"><strong>0</strong> items left</span>
     <ul class="filters">
       <li>
-        <a (click)="setVisibility('all')">All</a>
+        <a href="#">All</a>
       </li>
       <li>
-        <a (click)="setVisibility('active')">Active</a>
+        <a href="#">Active</a>
       </li>
       <li>
-        <a (click)="setVisibility('done')">Completed</a>
+        <a href="#">Completed</a>
       </li>
     </ul>
     <button class="clear-completed" style="display: block;">Clear completed</button>
   </footer>
 </section>
-
-<p>
-  {{filteredTodos() | json}}
-</p>
