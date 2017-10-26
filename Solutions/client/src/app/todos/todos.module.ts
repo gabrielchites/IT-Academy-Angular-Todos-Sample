@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodosComponent } from './todos.component';
 import { FormsModule } from '@angular/forms';
+import {TodoService} from "./services/todo.service";
 
 @NgModule({
   imports: [
@@ -9,6 +10,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [TodosComponent],
-  declarations: [TodosComponent]
+  declarations: [TodosComponent],
+  providers: [TodoService]
 })
 export class TodosModule { }

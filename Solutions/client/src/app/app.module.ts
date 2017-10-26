@@ -1,17 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule }   from '@angular/router';
-import { AppComponent } from './app.component';
-import { TodosComponent } from './todos/todos.component';
-import { TodosModule } from './todos/todos.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {RouterModule}   from '@angular/router';
+import {AppComponent} from './app.component';
+import {TodosComponent} from './todos/todos.component';
+import {TodosModule} from './todos/todos.module';
+import {HttpModule} from "@angular/http";
 
 const appRoutes = [
   {
     path: 'todos',
     component: TodosComponent,
-    data: { title: 'Heroes List' }
+    data: {title: 'Heroes List'}
   },
-  { path: '',
+  {
+    path: '',
     redirectTo: '/todos',
     pathMatch: 'full'
   },
@@ -25,9 +27,11 @@ const appRoutes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    TodosModule
+    TodosModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

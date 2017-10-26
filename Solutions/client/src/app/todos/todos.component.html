@@ -1,7 +1,7 @@
 
 <section class="todoapp">
   <header class="header">
-    <h1>To-dos</h1>
+    <h1>{{pageTitle}}</h1>
     <form (submit)="addTodo()">
       <input name="newTodo" class="new-todo" [(ngModel)]="this.newTodoText" placeholder="What needs to be done?" autofocus="">
     </form>

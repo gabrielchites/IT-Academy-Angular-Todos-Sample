@@ -3,10 +3,10 @@ const router = express.Router();
 const _ = require('lodash');
 
 let todos = [
-  {text: 'remember the milk', done: false, id: 1},
-  {text: 'remember the beer', done: false, id: 2},
-  {text: 'done task', done: true, id: 3},
-  {text: 'learn Node.js', done: false, id: 4},
+  {text: 'remember the milk', isDone: false, id: 1},
+  {text: 'remember the beer', isDone: false, id: 2},
+  {text: 'done task', isDone: true, id: 3},
+  {text: 'learn Node.js', isDone: false, id: 4},
 ];
 
 function getNewId() {
@@ -36,7 +36,7 @@ router.get('/:id', function (req, res) {
 });
 
 router.post('/', (req, res) => {
-  const todo = req.body;
+  let todo = req.body;
   todo.id = getNewId();
 
   todos.push(todo);
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  const id = req.params.id;
+    let id = req.params.id;
 
   let todo = getTodoById(id);
   let todoIndex = todos.indexOf(todo);
@@ -60,7 +60,7 @@ router.delete('/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id;
+  let id = req.params.id;
   const todo = getTodoById(id);
   const newTodo = req.body;
 

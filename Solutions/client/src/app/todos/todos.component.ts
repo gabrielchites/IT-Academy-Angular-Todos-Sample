@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Todo} from "./todo";
+import {TodoService} from "./services/todo.service";
 
 @Component({
   selector: 'app-todos',
@@ -10,7 +12,7 @@ export class TodosComponent implements OnInit {
   newTodoText: string = '';
   editingTodoText: ''; // so the original text can be restored in case the user press Escape
   inputFocused: false;
-  todos: Todo[] = [{text: 'Remember the milk', isDone: false}, {text: 'Done task', isDone: true}];
+  todos: Todo[]; // = [{text: 'Remember the milk', isDone: false}, {text: 'Done task', isDone: true}];
   todosVisibility = 'all';
 
   filters = {
@@ -27,10 +29,13 @@ export class TodosComponent implements OnInit {
 
   filteredTodos = () => this.filters[this.todosVisibility](this.todos);
 
-  constructor() {
+  constructor(private todoService : TodoService) {
   }
 
   ngOnInit() {
+    this.todoService.getTodos().then((todos) => {
+      this.todos = todos;
+    });
   }
 
   addTodo(): void {
@@ -51,9 +56,4 @@ export class TodosComponent implements OnInit {
     this.todosVisibility = visibility;
   }
 
-}
-
-export class Todo {
-  text: string;
-  isDone: boolean;
 }
